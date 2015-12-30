@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jooby-starters/hello-restful.svg?branch=master)](https://travis-ci.org/jooby-starters/hello-restful)
 # hello restful
 
 You will learn how to build a simple **JSON RESTFUL** web service with [Jooby](http://jooby.org).
