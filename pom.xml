@@ -31,6 +31,7 @@
       <artifactId>jooby</artifactId>
     </dependency>
 
+    <!-- Jackson -->
     <dependency>
       <groupId>org.jooby</groupId>
       <artifactId>jooby-jackson</artifactId>

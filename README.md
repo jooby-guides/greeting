@@ -1,7 +1,10 @@
-[![Build Status](https://travis-ci.org/jooby-starters/hello-restful.svg?branch=master)](https://travis-ci.org/jooby-starters/hello-restful)
+[![Build Status](https://travis-ci.org/jooby-guides/hello-restful.svg?branch=master)](https://travis-ci.org/jooby-guides/hello-restful)
+
 # hello restful
 
 You will learn how to build a simple **JSON RESTFUL** web service with [Jooby](http://jooby.org).
+
+In this guide we will write some routes using the **script programming model**, if you want to compare the same guide using the **mvc programming model** checkout the: [hello mvc restful guide](http://jooby.org/guides/hello-mvc-restful)
 
 The service will be available at:
 
@@ -18,28 +21,27 @@ and produces a **JSON** response:
 }
 ```
 
-## requirements
+# requirements
 
 Make sure you have all these software installed it in your computer:
 
 * A text editor or IDE
 * [JDK 8+](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or later
 * [Maven 3+](http://maven.apache.org/)
-* [Git](https://git-scm.com/downloads)
 
-## ready
+# ready
 
 Open a terminal (console for Windows users) and paste:
 
 ```bash
-git clone https://github.com/jooby-starters/hello-restful.git
-
-cd hello-restful
+mvn archetype:generate -B -DgroupId=hellorestful -DartifactId=hello-restful -Dversion=1.0 -DarchetypeArtifactId=jooby-archetype -DarchetypeGroupId=org.jooby -DarchetypeVersion=0.13.0
 ```
 
 An almost empty application is ready to run, you can try now with:
 
 ```
+cd hello-restful
+
 mvn jooby:run
 ```
 
@@ -49,9 +51,9 @@ Open a browser and type:
 http://localhost:8080
 ```
 
-**TIP**: If you are using an IDE that automatically compiles your source code while you save it... ```mvn jooby:run``` will detects those changes and restart the application for you!! more at [mvn jooby:run](https://github.com/jooby-project/jooby/tree/master/jooby-maven-plugin).
+> **TIP**: If you are using an IDE that automatically compiles your source code while you save it... ```mvn jooby:run``` will detects those changes and restart the application for you!! more at [mvn jooby:run](https://github.com/jooby-project/jooby/tree/master/jooby-maven-plugin).
 
-## quick preview
+# quick preview
 
 Before moving forward let's have a look at ```src/main/java/hellorestful/App.java```:
 
@@ -61,7 +63,7 @@ public class App extends Jooby { // 1 extends Jooby
 
   {
     // 2 define some routes
-    get("/", () -> "Welcome to the hello-restul guide!");
+    get("/", () -> "Hello World!");
   }
 
   public static void main(final String[] args) throws Exception {
@@ -78,7 +80,7 @@ Do you see the comments in the source code?
 2. We define some routes in the instance initializer (this is **NOT static code**)
 3. A **Jooby** app need to be instantiated and then started. 
 
-## getting dirty
+# getting dirty
 
 Now we already see how a **Jooby** app looks like, we are going to create a simple greeting **RESTFUL** web service at ```http://localhost:8080/greeting```
 
@@ -127,7 +129,7 @@ Not bad at all! But, don't we suppose to build a **JSON** **RESTFUL** web servic
 
 Absolutely, but before that, let's see how to add a simple and optional HTTP parameter.
 
-### adding a name parameter
+## adding a name parameter
 
 We are going to improve our service by allowing a name parameter:
 
@@ -175,7 +177,7 @@ or from helper methods, like: ```.value(String)```.
 
 Try it again with or without a ```name``` parameter!!
 
-### path parameter
+## path parameter
 
 If you want or prefer a ```path``` parameter, you can replace the path pattern with: ```/greeting/:name``` or allow both of them:
 
@@ -205,7 +207,7 @@ http://localhost:8080/greeting/Jooby
 
 Nice ugh? 
 
-### writing JSON
+## json
 
 As you already known, [Jooby](http://jooby.org) is a micro-web framework in order to write a **JSON** response we need one of the available [json modules](/doc/parser-and-renderer).
 
@@ -252,11 +254,13 @@ Now, try the service again and you will get a nice **JSON** response:
 }
 ```
 
-## source code
+# source code
 
-Fork this guide at: [hello-restful](https://github.com/jooby-starters/hello-restful).
+* Complet source code available at: [hello-restful](https://github.com/jooby-guides/hello-restful)
 
-Complete source code is available in the [final](https://github.com/jooby-starters/hello-restful/tree/final) branch. 
+# help and support
 
+* Discuss, share ideas, ask questions at [group](https://groups.google.com/forum/#!forum/jooby-project) or [slack](https://jooby.slack.com)
+* Follow us at [@joobyproject](https://twitter.com/joobyproject) and [GitHub](https://github.com/jooby-project/jooby/tree/master)
 
 Happy coding!!
