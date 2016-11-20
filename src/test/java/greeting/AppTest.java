@@ -1,4 +1,4 @@
-package hellorestful;
+package greeting;
 
 import org.junit.Test;
 

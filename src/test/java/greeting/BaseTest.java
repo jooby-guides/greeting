@@ -1,4 +1,4 @@
-package hellorestful;
+package greeting;
 
 import org.jooby.test.AppRule;
 import org.jooby.test.Client;
