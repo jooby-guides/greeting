@@ -1,11 +1,7 @@
 package greeting;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.jooby.Jooby;
 import org.jooby.json.Jackson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class App extends Jooby {
 

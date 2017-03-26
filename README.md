@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jooby-guides/greeting.svg?branch=master)](https://travis-ci.org/jooby-guides/greeting)
+[![Build Status](https://travis-ci.org/jooby-project/greeting.svg?branch=master)](https://travis-ci.org/jooby-project/greeting)
 # greeting
 
 You will learn how to build a simple **JSON API** with [Jooby](http://jooby.org/apidocs/org/jooby/Jooby.html).
