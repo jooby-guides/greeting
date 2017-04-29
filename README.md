@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jooby-project/greeting.svg?branch=master)](https://travis-ci.org/jooby-project/greeting)
+[![Build Status](https://travis-ci.org/jooby-guides/greeting.svg?branch=master)](https://travis-ci.org/jooby-guides/greeting)
 # greeting
 
 You will learn how to build a simple **JSON API** with [Jooby](http://jooby.org/apidocs/org/jooby/Jooby.html).
@@ -9,7 +9,7 @@ The service will be available at:
 http://localhost:8080/greeting
 ```
 
-and respond with `JSON` response:
+and respond with the `JSON` response:
 
 ```json
 {
@@ -18,16 +18,16 @@ and respond with `JSON` response:
 }
 ```
 
-[Jooby](http://jooby.org) offers two programming model:
+[Jooby](http://jooby.org) offers two programming models:
 
-* **script**, where routes are writing via **DSL** and lambdas.
-* **mvc**, where routes are writing as class method and annotations.
+* **script**, where routes are written via **DSL** and lambdas.
+* **mvc**, where routes are written as class method and annotations.
 
 In this guide you will learn how to write a simple **JSON API** using both models.
 
 # requirements
 
-Make sure you have all these software installed it in your computer:
+Make sure you have the following installed on your computer:
 
 * A text editor or IDE
 * [JDK 8+](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or later
@@ -38,10 +38,10 @@ Make sure you have all these software installed it in your computer:
 Open a terminal/console and paste:
 
 ```bash
-mvn archetype:generate -B -DgroupId=org.jooby.guides -DartifactId=greeting -Dversion=1.0 -DarchetypeArtifactId=jooby-archetype -DarchetypeGroupId=org.jooby -DarchetypeVersion=1.0.2
+mvn archetype:generate -B -DgroupId=org.jooby.guides -DartifactId=greeting -Dversion=1.0 -DarchetypeArtifactId=jooby-archetype -DarchetypeGroupId=org.jooby -DarchetypeVersion=1.1.1
 ```
 
-A simple `hello world` application is ready to run. Try now:
+A simple `hello world` application is now ready to run. Try:
 
 ```
 cd greeting
@@ -55,11 +55,11 @@ Open a browser and type:
 http://localhost:8080
 ```
 
-> **TIP**: If you make a change `jooby:run` automatically restart and reload your application. More at [development tools](http://jooby.org/doc/devtools).
+> **TIP**: If you make a change, `jooby:run` will automatically restart and reload your application. More at [development tools](http://jooby.org/doc/devtools).
 
 # quick preview
 
-Before moving forward let's have a look at `App.java`:
+Before moving forward, let's have a look at `App.java`:
 
 ```java
 package greeting;
@@ -81,11 +81,11 @@ public class App extends Jooby { // 1 extends Jooby
 }
 ```
 
-That's all you need to get up and running a simple **Hello World** [Jooby](http://jooby.org/apidocs/org/jooby/Jooby.html) application. 
+That's all you need to get a simple **Hello World** [Jooby](http://jooby.org/apidocs/org/jooby/Jooby.html) application up and running.
 
 # script route
 
-Now we already see how a [Jooby](http://jooby.org/apidocs/org/jooby/Jooby.html) application looks like, we are going to create a simple greeting **JSON API**:
+Now that we've seen what a [Jooby](http://jooby.org/apidocs/org/jooby/Jooby.html) application looks like, we are going to create a simple greeting **JSON API**:
 
 First `Greeting.java`:
 
@@ -130,11 +130,11 @@ Try it:
 http://localhost:8080/greeting
 ```
 
-You'll see `Hello World!` in your browser, not bad ugh?
+You'll see `Hello World!` in your browser, not bad huh?
 
 Not bad at all! But if you look closely we send a `text/html` response not an `application/json` response.
 
-Before building **JSON** response let's see how to read a HTTP parameter.
+Before building **JSON** response let's see how to read an HTTP parameter.
 
 ## adding a name parameter
 
@@ -152,7 +152,7 @@ We are going to improve our service by allowing a name parameter:
 }
 ```
 
-HTTP parameters are accessible via [Request.param(String)](http://jooby.org/apidocs/org/jooby/Request.html#param-java.lang.String-) method, that is why we change a bit our route to access the [Request](http://jooby.org/apidocs/org/jooby/Request.html) object.
+HTTP parameters are accessible via the [Request.param(String)](http://jooby.org/apidocs/org/jooby/Request.html#param-java.lang.String-) method, that is why we change our route a bit to access the [Request](http://jooby.org/apidocs/org/jooby/Request.html) object.
 
 Try it:
 
@@ -176,7 +176,7 @@ What if you call the service without a ```name```? You will get a ```Bad Request
 
 Same as before, we ask for the HTTP parameter but this time we set a default value: ```World```.
 
-The [Mutant.value(String)](http://jooby.org/apidocs/org/jooby/Mutant.html#value-java.lang.String-) is syntax sugar for:
+The [Mutant.value(String)](http://jooby.org/apidocs/org/jooby/Mutant.html#value-java.lang.String-) is syntactical sugar for:
 
 ```
 String name = req.param("name").toOptional().orElse("World");
@@ -220,27 +220,27 @@ Try it with a query parameter:
 http://localhost:8080/greeting?name=Jooby
 ```
 
-Nice ugh?
+Nice huh?
 
 # json
 
-[Jooby](http://jooby.org) is a micro-web framework in order to write a **JSON** response we need one of the available [json modules](http://jooby.org/doc/parser-and-renderer).
+[Jooby](http://jooby.org) is a micro-web framework, so in order to write a **JSON** response you will need one of the available [json modules](http://jooby.org/doc/parser-and-renderer).
 
-Here we will use [jackson](https://github.com/jooby-project/jooby/tree/master/jooby-jackson) but keep in mind the process is exactly the same if you choose any other module.
+In this example we'll use [jackson](https://github.com/jooby-project/jooby/tree/master/jooby-jackson) but the process is exactly the same if you choose any of the other modules.
 
 ## dependency
 
-Let's add the [jackson](https://github.com/jooby-project/jooby/tree/master/jooby-jackson) dependency to your project:
+Let's add the [jackson](https://github.com/jooby-project/jooby/tree/master/jooby-jackson) dependency to the project:
 
 ```xml
 <dependency>
   <groupId>org.jooby</groupId>
   <artifactId>jooby-jackson</artifactId>
-  <version>1.0.2</version>
+  <version>1.1.1</version>
 </dependency>
 ```
 
-If `jooby:run` is running, please restart it. We need to force a restart due we added a new dependency.
+If `jooby:run` is running, please restart it. We need to force a restart due to having added a new dependency.
 
 ## use
 
@@ -264,9 +264,9 @@ import org.jooby.json.Jackson;
 }
 ```
 
-Our service method didn't change at all! we just [use](http://jooby.org/apidocs/org/jooby/Jooby.html#use-org.jooby.Jooby.Module-) the [jackson](https://github.com/jooby-project/jooby/tree/master/jooby-jackson) module!!
+Our service method didn't change at all! we just [use](http://jooby.org/apidocs/org/jooby/Jooby.html#use-org.jooby.Jooby.Module-) the [jackson](https://github.com/jooby-project/jooby/tree/master/jooby-jackson) module!
 
-Try it
+Try accessing
 
     http://localhost:8080/greeting
 
@@ -304,7 +304,7 @@ public class Greetings {
 }
 ```
 
-The **MVC** programming model is similar to [Spring](http://spring.io) and/or [Jersey](https://jersey.java.net), except a `MVC` routes must be registered at at application startup time.
+The **MVC** programming model is similar to [Spring](http://spring.io) and/or [Jersey](https://jersey.java.net), except an `MVC` route must be registered at application startup time.
 
 ## registering a mvc route
 
@@ -318,11 +318,11 @@ Go to `App.java` and add this line:
 }
 ```
 
-We try to keep `reflection`, `classpath scanning` and `annotations` to minimum that is one of reason why they need to be explicitly registered.
+Jooby tries to keep `reflection`, `classpath scanning` and `annotations` to a minimum. That is one of the reasons why routes need to be explicitly registered.
 
-The other reason is the **route order**, because routes are executed in the **order** they are defined.
+The other reason is the **route order**, since routes are executed in the **order** they are defined.
 
-Having said that, we do offer a service [scanner](https://github.com/jooby-project/jooby/tree/master/jooby-scanner) module that automatically register `MVC` routes.
+Having said that, we do offer a service [scanner](https://github.com/jooby-project/jooby/tree/master/jooby-scanner) module that automatically registers `MVC` routes.
 
 Try it:
 
@@ -330,7 +330,7 @@ Try it:
 
 ## adding a name parameter
 
-As we do with script route we are going to add a **required** `name` parameter:
+As with the script route, we are going to add a **required** `name` parameter:
 
 ```java
 @Path("/greeting")
@@ -387,17 +387,13 @@ Try it with a query parameter:
 
 # conclusion
 
-Your application might looks like something similar to this:
+Your application might look something like this now:
 
 ```java
 package greeting;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.jooby.Jooby;
 import org.jooby.json.Jackson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class App extends Jooby {
 
@@ -429,15 +425,15 @@ public class App extends Jooby {
 }
 ```
 
-This is an unreal and simple **JSON API** but helps to demonstrate how simple and easy is to build such application in [Jooby](http://jooby.org). **Simplicity** is one of the [Jooby](http://jooby.org) goals.
+This is an unrealistic **JSON API**, but it helps to demonstrate how simple and easy is to build such an application in [Jooby](http://jooby.org). **Simplicity** is one of the [Jooby](http://jooby.org) goals.
 
 We also demonstrate the **script** and **mvc** programming models, you can pick one or mix both in a single application.
 
-The **script** programming model is perfect for getting thing done quickly and/or for small applications. It is also possible to use the **script** routes on large applications, where you usually split routes in one or more applications and then you compose all those small application into a one.
+The **script** programming model is perfect for getting things done quickly and/or for small applications. It is also possible to use the **script** routes on larger applications, where you usually split routes in one or more applications and then you compose all those small application into one.
 
 The **mvc** programming model is a bit more verbose but probably better for large scale applications.
 
-A common pattern for **medium** scale applications is to write the **UI** routes (those who generated HTML) using the **script** programming model while the **Business/API** routes using the **MVC** programming model. 
+A common pattern for **medium** scale applications is to write the **UI** routes (those which generate HTML) using the **script** programming model while writing the **Business/API** routes using the **MVC** programming model. 
 
 In short, **script** or **mvc** is matter of taste and/or depends on your background.
 
@@ -446,10 +442,10 @@ That's all for now, if you like what you see here please follow us at [@joobypro
 
 # source code
 
-* Complete source code available at: [jooby-guides/greeting](https://github.com/jooby-guides/greeting)
+* Complete source code available at: [jooby-project/greeting](https://github.com/jooby-project/greeting)
 
 # help and support
 
-* Discuss, share ideas, ask questions at [group](https://groups.google.com/forum/#!forum/jooby-project) or [slack](https://jooby.slack.com)
+* Discuss, share ideas, ask questions at [group](https://groups.google.com/forum/#!forum/jooby-project) or [gitter](https://gitter.im/jooby-project/jooby)
 * Follow us at [@joobyproject](https://twitter.com/joobyproject) and [GitHub](https://github.com/jooby-project/jooby/tree/master)
 
