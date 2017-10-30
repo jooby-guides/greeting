@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jooby-project/greeting.svg?branch=master)](https://travis-ci.org/jooby-project/greeting)
+[![Build Status](https://travis-ci.org/jooby-guides/greeting.svg?branch=master)](https://travis-ci.org/jooby-guides/greeting)
 # greeting
 
 You will learn how to build a simple **JSON API** with [Jooby](http://jooby.org/apidocs/org/jooby/Jooby.html).
@@ -38,7 +38,7 @@ Make sure you have the following installed on your computer:
 Open a terminal/console and paste:
 
 ```bash
-mvn archetype:generate -B -DgroupId=org.jooby.guides -DartifactId=greeting -Dversion=1.0 -DarchetypeArtifactId=jooby-archetype -DarchetypeGroupId=org.jooby -DarchetypeVersion=1.1.3
+mvn archetype:generate -B -DgroupId=org.jooby.guides -DartifactId=greeting -Dversion=1.0 -DarchetypeArtifactId=jooby-archetype -DarchetypeGroupId=org.jooby -DarchetypeVersion=1.2.1
 ```
 
 A simple `hello world` application is now ready to run. Try:
@@ -236,7 +236,7 @@ Let's add the [jackson](https://github.com/jooby-project/jooby/tree/master/jooby
 <dependency>
   <groupId>org.jooby</groupId>
   <artifactId>jooby-jackson</artifactId>
-  <version>1.1.3</version>
+  <version>1.2.1</version>
 </dependency>
 ```
 
